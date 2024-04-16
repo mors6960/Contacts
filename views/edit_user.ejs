@@ -1,0 +1,66 @@
+<%- include('layout/header') %> <!-- Including header -->
+
+<%- include('layout/footer') %> <!-- Including footer -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- for dynamic title -->
+    <title><%= title %></title>
+    <!-- bootstrap cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+        integrity="sha512-t4GWSVZO1eC8BM339Xd7Uphw5s17a86tIZIj8qRxhnKub6WoyhnrxeCIMeAqBPgdZGlCcG2PrZjMc+Wr78+5Xg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- font awesome cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <!-- for tables -->
+    <link href="https://cdn.datatables.net/v/bs5/dt-1.13.4/datatables.min.css" rel="stylesheet" />
+
+</head>
+<style>
+    /* your custom styles */
+</style>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Edit User</h2>
+        <form action="/update/<%= user._id %>" method="post" id="add-form" enctype="multipart/form-data" class="custom-form">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" name="name" class="form-control custom-input" id="name" 
+                pattern="[A-Za-z\s]+" title="Please enter a valid name (letters only)" value="<%= user.name %>">
+            
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" name="email" class="form-control custom-input" id="email" value="<%= user.email%>">
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">+91</span>
+                    </div> 
+                    <input type="tel" name="phone" class="form-control custom-input" id="phone" 
+                        pattern="[6-9][0-9]{9}"
+                        title="Please enter a 10-digit phone number starting with 6, 7, 8, or 9" value="<%= user.phone%>">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="image">Select Image</label>
+                <input type="file" class="form-control custom-file-input" id="profile_pic" name="image">
+                <img src="/<%= user.image %>" alt="image" class="img-thumbnail mt-1" width="100" height="100">
+                <input type="hidden" name="old_image" class="form-control-file custom-file-input"  value=<%= user.image %>>
+                
+            </div>
+           
+            <button type="submit" class="btn btn-primary custom-button">Edit User</button>
+        </form>
+    </div>
+</body>
+</html> 

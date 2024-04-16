@@ -1,0 +1,129 @@
+<%- include('layout/header') %> <!-- Including header -->
+
+<%- include('layout/footer') %> <!-- Including footer -->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- for dynamic title -->
+    <title>
+        <!-- <%= title %> -->
+    </title>
+    <!-- bootstrap cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+        integrity="sha512-t4GWSVZO1eC8BM339Xd7Uphw5s17a86tIZIj8qRxhnKub6WoyhnrxeCIMeAqBPgdZGlCcG2PrZjMc+Wr78+5Xg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- font awesome cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <!-- for tables -->
+    <link href="https://cdn.datatables.net/v/bs5/dt-1.13.4/datatables.min.css" rel="stylesheet" />
+
+</head>
+<style>
+    .custom-form {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f8f8f8;
+    }
+
+    .custom-input {
+        border-radius: 3px;
+        border: 1px solid #ccc;
+        padding: 8px;
+    }
+
+    .custom-file-input {
+        padding: 8px;
+        border-radius: 7px;
+        border: 1px solid #ccc;
+        background-color: #fff;
+    }
+
+    .custom-button {
+        margin-top: 10px;
+        margin-bottom: 12px;
+        padding: 10px 20px;
+        border-radius: 10px;
+    }
+
+    /* Color of the links BEFORE scroll */
+    .navbar-scroll .nav-link,
+    .navbar-scroll .navbar-toggler-icon,
+    .navbar-scroll .navbar-brand {
+        color: #262626;
+    }
+
+    /* Color of the navbar BEFORE scroll */
+    .navbar-scroll {
+        background-color: #FFC017;
+    }
+
+    /* Color of the links AFTER scroll */
+    .navbar-scrolled .nav-link,
+    .navbar-scrolled .navbar-toggler-icon,
+    .navbar-scroll .navbar-brand {
+        color: #262626;
+    }
+
+    /* Color of the navbar AFTER scroll */
+    .navbar-scrolled {
+        background-color: #fff;
+    }
+
+    /* An optional height of the navbar AFTER scroll */
+    .navbar.navbar-scroll.navbar-scrolled {
+        padding-top: auto;
+        padding-bottom: auto;
+    }
+
+    .navbar-brand {
+        font-size: unset;
+        height: 3.5rem;
+    }
+</style>
+ <body>
+ <div class="container mt-5">
+        <h2 class="text-center mb-4">Add New User</h2>
+        <form action="/add" method="post" id="add-form" enctype="multipart/form-data" class="custom-form">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" name="name" class="form-control custom-input" id="name" placeholder="Enter name"
+                    required pattern="[A-Za-z\s]+" title="Please enter a valid name (letters only)">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" name="email" class="form-control custom-input" id="email" placeholder="Enter email"
+                    required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone</label>
+                <div class="input-group">
+
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">+91</span>
+                    </div> 
+                    <input type="tel" name="phone" class="form-control custom-input" id="phone" placeholder="Enter phone"
+                        required pattern="[6-9][0-9]{9}"
+                        title="Please enter a 10-digit phone number starting with 6, 7, 8, or 9">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="image">Select Image</label>
+                <input type="file" name="image" class="form-control-file custom-file-input" id="image" required>
+            </div>
+            <button type="submit" class="btn btn-primary custom-button">Add User</button>
+        </form>
+    </div>
+</body>
+</html>
